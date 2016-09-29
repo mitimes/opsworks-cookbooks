@@ -20,7 +20,8 @@ node[:deploy].each do |application, deploy|
   settings = node[:resque][application]
   # configure rails_env in case of non-rails app
   rack_env = deploy[:rails_env] || settings[:rack_env] || settings[:rails_env]
-  settings[:workers].each do |queue, quantity|
+  # settings[:workers].each do |queue, quantity|
+  {"*" => "4"}.each do |queue, quantity|
 
     quantity.times do |idx|
       idx = idx + 1 # make index 1-based
