@@ -1,2 +1,2 @@
-default[:resque][:workers] = {'*' => 1}
-default[:resque][:path] = "#{node[:deploy].values[0][:deploy_to]}/current"
+default[:resque][:workers] = {'*' => 4}
+default[:resque][:path] = "/srv/www/app/current"
