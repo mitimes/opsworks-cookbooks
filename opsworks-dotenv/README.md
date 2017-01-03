@@ -32,7 +32,7 @@ Dotenv.load
 
 ### configure
 
-In the OpsWorks stack dashboard click on stack Settings and supply your ENV configuration.
+In the OpsWorks stack dashboard click on stack Settings.
 For example:
 
 ```json
@@ -41,10 +41,6 @@ For example:
     "app_name":{
       "symlink_before_migrate":{
         ".env" : ".env"
-      },
-      "app_env": {
-        "YOUR_ENV_KEY": "KEY_VALUE",
-        "ANOTHER_ENV_KEY": "SECOND_VALUE"
       }
     }
   }
@@ -59,4 +55,5 @@ You can now deploy your app and enjoy the `ENV`
 ### layer app server
 
 update custom chef recipes to run the dotenv recipe on deploy - from head repository:
+
 - opsworks-dotenv::dotenv

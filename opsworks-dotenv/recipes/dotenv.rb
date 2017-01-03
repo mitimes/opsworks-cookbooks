@@ -5,11 +5,13 @@ node[:deploy].each do |application, deploy|
 
   Chef::Log.info("Generating dotenv for app: #{application} with env: #{rails_env}...")
 
-  environment_variables = deploy[:app_env].to_h.merge(deploy[:environment_variables].to_h)
-  open("#{deploy[:deploy_to]}/shared/.env", 'w') do |f|
-    require 'yaml'
-    environment_variables.each do |name, value|
-      f.puts "#{name}=#{value.to_s.shellescape}"
-    end
+  template "#{deploy[:deploy_to]}/shared/.env" do
+    mode '0640'
+    owner deploy[:user]
+    group deploy[:group]
+    source '.env.erb'
+    variables(
+      :environment => OpsWorks::Escape.escape_double_quotes(deploy[:environment_variables])
+    )
   end
 end
