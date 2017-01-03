@@ -55,3 +55,8 @@ The `symlink_before_migrate` key just tells OpsWorks to create a link to `.env` 
 application folder into  `current`, so it can be picked up by Rails.
 
 You can now deploy your app and enjoy the `ENV`
+
+### layer app server
+
+update custom chef recipes to run the dotenv recipe on deploy - from head repository:
+- opsworks-dotenv::dotenv

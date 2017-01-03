@@ -1,17 +1,5 @@
-# import JSON custom config into .env to emulate ENV
-# example:
-# {
-#   "deploy": {
-#     "app_name" {
-#       "app_env": {
-#         "DATABASE_URL": "",
-#         "bar": "foo"
-#       }
-#     }
-#   }
-# }
-
 require 'shellwords'
+
 node[:deploy].each do |application, deploy|
   rails_env = deploy[:rails_env]
 
